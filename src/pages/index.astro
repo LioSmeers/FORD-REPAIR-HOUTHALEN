@@ -11,12 +11,12 @@ const currentYear = new Date().getFullYear();
       name="description"
       content="Algemeen onderhoud en reparatie van Ford-wagens en lichte bestelwagens tot en met 3,5 ton in Houthalen."
     />
-    <title>Ford-Cars NV | Ford-specialist in Houthalen</title>
+    <title>Ford Repair | Ford-specialist in Houthalen</title>
   </head>
   <body>
     <header class="site-nav" aria-label="Hoofdnavigatie">
-      <a class="brand" href="#top" aria-label="Ford-Cars NV homepage">
-        <span class="brand__name">FORD-CARS NV</span>
+      <a class="brand" href="#top" aria-label="Ford Repair homepage">
+        <span class="brand__name">FORD REPAIR</span>
         <span class="brand__tagline">Onafhankelijk verdeler</span>
       </a>
 
@@ -24,7 +24,7 @@ const currentYear = new Date().getFullYear();
         <a href="#diensten">Diensten</a>
         <a href="#occasies">Occasies</a>
         <a href="#contact">Contact</a>
-        <a class="nav-cta" href="#contact">Maak afspraak</a>
+        <button class="nav-cta" type="button" data-open-appointment>Maak afspraak</button>
       </nav>
     </header>
 
@@ -33,7 +33,7 @@ const currentYear = new Date().getFullYear();
         <img
           class="hero__image"
           src="/images/hero-garage.png"
-          alt="Ford-Cars NV in Houthalen met wagens voor de garage"
+          alt="Ford Repair in Houthalen met wagens voor de garage"
           loading="eager"
           decoding="async"
         />
@@ -55,7 +55,9 @@ const currentYear = new Date().getFullYear();
             </p>
 
             <div class="hero__actions" aria-label="Contactopties">
-              <a class="button button--primary" href="#contact">Maak een afspraak</a>
+              <button class="button button--primary" type="button" data-open-appointment>
+                Maak een afspraak
+              </button>
               <a class="button button--secondary" href="tel:+32472672647">
                 Bel 0472 67 26 47
               </a>
@@ -80,7 +82,7 @@ const currentYear = new Date().getFullYear();
 
           <div class="core-activity__stats" aria-labelledby="stats-title">
             <div class="stats__heading">
-              <p class="section-index">FORD-CARS / IN CIJFERS</p>
+              <p class="section-index">FORD REPAIR / IN CIJFERS</p>
               <h2 id="stats-title">Ervaring die doorwerkt.</h2>
             </div>
 
@@ -279,7 +281,7 @@ const currentYear = new Date().getFullYear();
         <div class="location__details">
           <p class="location__label">ADRES</p>
           <address>
-            Ford-Cars NV<br />
+            Ford Repair<br />
             Europark 1074<br />
             Houthalen
           </address>
@@ -301,12 +303,13 @@ const currentYear = new Date().getFullYear();
           <p>Bel ons rechtstreeks of maak een afspraak voor onderhoud, diagnose of herstelling.</p>
           <div class="contact__actions">
             <a class="button button--primary" href="tel:+32472672647">Bel 0472 67 26 47</a>
-            <a
+            <button
               class="button button--secondary"
-              href="sms:+32472672647?body=Hallo%2C%20ik%20wil%20graag%20een%20afspraak%20aanvragen%20voor%20mijn%20Ford."
+              type="button"
+              data-open-appointment
             >
               Vraag afspraak aan
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -314,16 +317,224 @@ const currentYear = new Date().getFullYear();
 
     <footer class="site-footer">
       <div class="page-width site-footer__top">
-        <p class="site-footer__name">FORD-CARS NV</p>
+        <p class="site-footer__name">FORD REPAIR</p>
         <p>Onafhankelijk verdeler</p>
       </div>
       <div class="page-width site-footer__bottom">
-        <p>&copy; {currentYear} FORD-CARS NV</p>
+        <p>&copy; {currentYear} FORD REPAIR</p>
         <p>EUROPARK 1074 &mdash; HOUTHALEN</p>
+        <p>BTW BE0726.692.326</p>
       </div>
     </footer>
 
+    <dialog class="appointment-dialog" id="appointment-dialog" aria-labelledby="appointment-title">
+      <button
+        class="appointment-dialog__close"
+        type="button"
+        data-close-appointment
+        aria-label="Afspraakformulier sluiten"
+      >
+        &times;
+      </button>
+
+      <div class="appointment-dialog__layout">
+        <aside class="appointment-dialog__info">
+          <p class="section-index">AFSPRAAK / AANVRAAG</p>
+          <h2 id="appointment-title">Plan uw bezoek.</h2>
+          <p>
+            Kies een voorkeursmoment. Ford Repair bevestigt de afspraak na uw
+            aanvraag.
+          </p>
+
+          <div class="opening-hours" aria-label="Openingsuren">
+            <p class="opening-hours__title">OPENINGSUREN</p>
+            <dl>
+              <div>
+                <dt>Ma &mdash; Vr</dt>
+                <dd>08:00 &mdash; 18:00</dd>
+              </div>
+              <div>
+                <dt>Za</dt>
+                <dd>08:00 &mdash; 12:00</dd>
+              </div>
+              <div>
+                <dt>Zo</dt>
+                <dd>Gesloten</dd>
+              </div>
+            </dl>
+          </div>
+        </aside>
+
+        <form class="appointment-form" id="appointment-form">
+          <div class="form-field">
+            <label for="appointment-name">Naam</label>
+            <input id="appointment-name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="form-field">
+            <label for="appointment-phone">Telefoonnummer</label>
+            <input
+              id="appointment-phone"
+              name="phone"
+              type="tel"
+              autocomplete="tel"
+              inputmode="tel"
+              required
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="appointment-vehicle">Wagen</label>
+            <input
+              id="appointment-vehicle"
+              name="vehicle"
+              type="text"
+              placeholder="Model en nummerplaat"
+              required
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="appointment-service">Type afspraak</label>
+            <select id="appointment-service" name="service" required>
+              <option value="">Maak een keuze</option>
+              <option>Onderhoud</option>
+              <option>Diagnose</option>
+              <option>Herstelling</option>
+              <option>Lichte bestelwagen</option>
+              <option>Andere vraag</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="appointment-date">Voorkeursdatum</label>
+            <input id="appointment-date" name="date" type="date" required />
+          </div>
+
+          <div class="form-field">
+            <label for="appointment-time">Voorkeurstijd</label>
+            <select id="appointment-time" name="time" disabled required>
+              <option value="">Kies eerst een datum</option>
+            </select>
+          </div>
+
+          <div class="form-field form-field--wide">
+            <label for="appointment-message">Extra informatie <span>(optioneel)</span></label>
+            <textarea id="appointment-message" name="message" rows="4"></textarea>
+          </div>
+
+          <label class="form-consent form-field--wide">
+            <input type="checkbox" name="consent" required />
+            <span>Ford Repair mag mij contacteren over deze aanvraag.</span>
+          </label>
+
+          <div class="appointment-form__footer form-field--wide">
+            <p>Uw sms-app opent met de ingevulde aanvraag. De afspraak is pas definitief na bevestiging.</p>
+            <button class="button button--primary" type="submit">Verstuur aanvraag</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
     <script>
+      const appointmentDialog = document.querySelector("#appointment-dialog");
+      const appointmentForm = document.querySelector("#appointment-form");
+      const appointmentDate = document.querySelector("#appointment-date");
+      const appointmentTime = document.querySelector("#appointment-time");
+      const appointmentOpeners = document.querySelectorAll("[data-open-appointment]");
+      const appointmentCloser = document.querySelector("[data-close-appointment]");
+
+      const formatLocalDate = (date) => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+      };
+
+      const createTimeOptions = (closingHour) => {
+        const options = [];
+        for (let hour = 8; hour < closingHour; hour += 1) {
+          options.push(`${String(hour).padStart(2, "0")}:00`);
+          options.push(`${String(hour).padStart(2, "0")}:30`);
+        }
+        return options;
+      };
+
+      const updateAvailableTimes = () => {
+        if (!appointmentDate || !appointmentTime) return;
+
+        appointmentTime.innerHTML = "";
+        appointmentDate.setCustomValidity("");
+
+        if (!appointmentDate.value) {
+          appointmentTime.disabled = true;
+          appointmentTime.add(new Option("Kies eerst een datum", ""));
+          return;
+        }
+
+        const selectedDate = new Date(`${appointmentDate.value}T12:00:00`);
+        const dayOfWeek = selectedDate.getDay();
+
+        if (dayOfWeek === 0) {
+          appointmentTime.disabled = true;
+          appointmentTime.add(new Option("Zondag gesloten", ""));
+          appointmentDate.setCustomValidity("Ford Repair is op zondag gesloten.");
+          appointmentDate.reportValidity();
+          return;
+        }
+
+        const times = createTimeOptions(dayOfWeek === 6 ? 12 : 18);
+        appointmentTime.add(new Option("Kies een tijdstip", ""));
+        times.forEach((time) => appointmentTime.add(new Option(time, time)));
+        appointmentTime.disabled = false;
+      };
+
+      if (appointmentDate) {
+        appointmentDate.min = formatLocalDate(new Date());
+        appointmentDate.addEventListener("change", updateAvailableTimes);
+      }
+
+      appointmentOpeners.forEach((opener) => {
+        opener.addEventListener("click", () => {
+          if (!appointmentDialog) return;
+
+          if ("showModal" in appointmentDialog) {
+            appointmentDialog.showModal();
+          } else {
+            appointmentDialog.setAttribute("open", "");
+          }
+
+          appointmentDialog.querySelector("input")?.focus();
+        });
+      });
+
+      appointmentCloser?.addEventListener("click", () => appointmentDialog?.close());
+
+      appointmentDialog?.addEventListener("click", (event) => {
+        if (event.target === appointmentDialog) appointmentDialog.close();
+      });
+
+      appointmentForm?.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!appointmentForm.reportValidity()) return;
+
+        const formData = new FormData(appointmentForm);
+        const message = [
+          "Afspraakaanvraag Ford Repair",
+          `Naam: ${formData.get("name")}`,
+          `Telefoon: ${formData.get("phone")}`,
+          `Wagen: ${formData.get("vehicle")}`,
+          `Type afspraak: ${formData.get("service")}`,
+          `Voorkeursmoment: ${formData.get("date")} om ${formData.get("time")}`,
+          formData.get("message") ? `Extra informatie: ${formData.get("message")}` : "",
+        ]
+          .filter(Boolean)
+          .join("\n");
+
+        appointmentDialog?.close();
+        window.location.href = `sms:+32472672647?body=${encodeURIComponent(message)}`;
+      });
+
       const stage = document.querySelector(".vehicle-stage");
       const secondStep = document.querySelector(".occasion-step--second");
       const desktop = window.matchMedia("(min-width: 901px)");
@@ -355,6 +566,7 @@ const currentYear = new Date().getFullYear();
 
       const counters = document.querySelectorAll("[data-counter]");
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const counterAnimations = new WeakMap();
 
       const formatCounter = (counter, value) => {
         const decimals = Number(counter.dataset.decimals || 0);
@@ -366,6 +578,9 @@ const currentYear = new Date().getFullYear();
         if (counter.dataset.counted === "true") return;
         counter.dataset.counted = "true";
 
+        const activeFrame = counterAnimations.get(counter);
+        if (activeFrame) window.cancelAnimationFrame(activeFrame);
+
         const target = Number(counter.dataset.target || 0);
         const duration = 1100;
         const startTime = performance.now();
@@ -375,10 +590,25 @@ const currentYear = new Date().getFullYear();
           const easedProgress = 1 - Math.pow(1 - progress, 3);
           counter.textContent = formatCounter(counter, target * easedProgress);
 
-          if (progress < 1) window.requestAnimationFrame(updateCounter);
+          if (progress < 1) {
+            const nextFrame = window.requestAnimationFrame(updateCounter);
+            counterAnimations.set(counter, nextFrame);
+          } else {
+            counterAnimations.delete(counter);
+          }
         };
 
-        window.requestAnimationFrame(updateCounter);
+        const firstFrame = window.requestAnimationFrame(updateCounter);
+        counterAnimations.set(counter, firstFrame);
+      };
+
+      const resetCounter = (counter) => {
+        const activeFrame = counterAnimations.get(counter);
+        if (activeFrame) window.cancelAnimationFrame(activeFrame);
+
+        counterAnimations.delete(counter);
+        counter.dataset.counted = "false";
+        counter.textContent = formatCounter(counter, 0);
       };
 
       if (!reducedMotion.matches && "IntersectionObserver" in window) {
@@ -389,12 +619,14 @@ const currentYear = new Date().getFullYear();
         const counterObserver = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
-              if (!entry.isIntersecting) return;
-              animateCounter(entry.target);
-              counterObserver.unobserve(entry.target);
+              if (entry.intersectionRatio >= 0.45) {
+                animateCounter(entry.target);
+              } else if (!entry.isIntersecting) {
+                resetCounter(entry.target);
+              }
             });
           },
-          { threshold: 0.45 },
+          { threshold: [0, 0.45] },
         );
 
         counters.forEach((counter) => counterObserver.observe(counter));
@@ -425,6 +657,17 @@ const currentYear = new Date().getFullYear();
   }
 
   :global(a) {
+    color: inherit;
+  }
+
+  :global(button),
+  :global(input),
+  :global(select),
+  :global(textarea) {
+    font: inherit;
+  }
+
+  :global(button) {
     color: inherit;
   }
 
@@ -524,16 +767,19 @@ const currentYear = new Date().getFullYear();
     letter-spacing: 0.02em;
   }
 
-  .nav-links a {
+  .nav-links a,
+  .nav-links button {
     text-decoration: none;
     white-space: nowrap;
   }
 
   .nav-cta {
+    appearance: none;
     border: 1px solid #72a8d8;
     padding: 9px 12px;
     background: #72a8d8;
     color: #050607;
+    cursor: pointer;
   }
 
   .hero {
@@ -643,6 +889,7 @@ const currentYear = new Date().getFullYear();
   }
 
   .button {
+    appearance: none;
     display: inline-flex;
     min-height: 42px;
     align-items: center;
@@ -653,6 +900,7 @@ const currentYear = new Date().getFullYear();
     font-weight: 600;
     line-height: 1.1;
     text-decoration: none;
+    cursor: pointer;
   }
 
   .button--primary {
@@ -1154,6 +1402,211 @@ const currentYear = new Date().getFullYear();
     margin: 0;
   }
 
+  .appointment-dialog {
+    width: min(calc(100% - 32px), 1080px);
+    max-height: calc(100svh - 32px);
+    margin: auto;
+    overflow: auto;
+    border: 1px solid #333;
+    padding: 0;
+    background: #090909;
+    color: #f2f0e9;
+  }
+
+  .appointment-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.82);
+  }
+
+  .appointment-dialog__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border: 1px solid #3a3a3a;
+    padding: 0;
+    background: #0c0c0c;
+    color: #f2f0e9;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .appointment-dialog__layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.45fr);
+  }
+
+  .appointment-dialog__info {
+    border-right: 1px solid #2a2a2a;
+    padding: 48px 40px;
+    background: #0c0c0c;
+  }
+
+  .appointment-dialog__info h2 {
+    margin: 52px 0 0;
+    font-size: 3.4rem;
+    line-height: 0.96;
+  }
+
+  .appointment-dialog__info > p:not(.section-index) {
+    margin: 30px 0 0;
+    color: #a7a7a2;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .opening-hours {
+    margin-top: 64px;
+    border-top: 1px solid #2a2a2a;
+    padding-top: 20px;
+  }
+
+  .opening-hours__title {
+    margin: 0 0 24px;
+    color: #72a8d8;
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.64rem;
+    letter-spacing: 0.08em;
+  }
+
+  .opening-hours dl {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+  }
+
+  .opening-hours dl div {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: #cfcec4;
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.7rem;
+  }
+
+  .opening-hours dt,
+  .opening-hours dd {
+    margin: 0;
+  }
+
+  .opening-hours dd {
+    color: #929292;
+  }
+
+  .appointment-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 18px;
+    padding: 74px 42px 42px;
+  }
+
+  .form-field {
+    display: grid;
+    align-content: start;
+    gap: 9px;
+    min-width: 0;
+  }
+
+  .form-field--wide {
+    grid-column: 1 / -1;
+  }
+
+  .form-field label,
+  .form-consent,
+  .appointment-form__footer p {
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.03em;
+    line-height: 1.45;
+  }
+
+  .form-field label {
+    color: #cfcec4;
+  }
+
+  .form-field label span {
+    color: #777;
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid #333;
+    border-radius: 0;
+    padding: 12px 13px;
+    background: #111;
+    color: #f2f0e9;
+    color-scheme: dark;
+    outline: 0;
+  }
+
+  .form-field input,
+  .form-field select {
+    min-height: 44px;
+  }
+
+  .form-field textarea {
+    resize: vertical;
+  }
+
+  .form-field input::placeholder,
+  .form-field textarea::placeholder {
+    color: #666;
+  }
+
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    border-color: #72a8d8;
+  }
+
+  .form-field input:user-invalid,
+  .form-field select:user-invalid,
+  .form-consent input:user-invalid {
+    border-color: #b9685f;
+  }
+
+  .form-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #929292;
+    cursor: pointer;
+  }
+
+  .form-consent input {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+    margin: 1px 0 0;
+    accent-color: #72a8d8;
+  }
+
+  .appointment-form__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border-top: 1px solid #2a2a2a;
+    padding-top: 22px;
+  }
+
+  .appointment-form__footer p {
+    max-width: 360px;
+    margin: 0;
+    color: #777;
+  }
+
+  .appointment-form__footer .button {
+    flex: 0 0 auto;
+  }
+
   @media (max-width: 900px) {
     .page-width {
       width: min(100% - 48px, 1260px);
@@ -1252,6 +1705,48 @@ const currentYear = new Date().getFullYear();
   @media (max-width: 760px) {
     .page-width {
       width: min(100% - 32px, 1260px);
+    }
+
+    .appointment-dialog {
+      width: calc(100% - 16px);
+      max-height: calc(100svh - 16px);
+    }
+
+    .appointment-dialog__layout {
+      grid-template-columns: 1fr;
+    }
+
+    .appointment-dialog__info {
+      border-right: 0;
+      border-bottom: 1px solid #2a2a2a;
+      padding: 38px 24px;
+    }
+
+    .appointment-dialog__info h2 {
+      margin-top: 38px;
+      font-size: 2.8rem;
+    }
+
+    .opening-hours {
+      margin-top: 42px;
+    }
+
+    .appointment-form {
+      grid-template-columns: 1fr;
+      padding: 34px 20px 24px;
+    }
+
+    .form-field--wide {
+      grid-column: 1;
+    }
+
+    .appointment-form__footer {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .appointment-form__footer .button {
+      width: 100%;
     }
 
     .core-activity__inner {
