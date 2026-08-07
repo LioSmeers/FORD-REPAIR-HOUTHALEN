@@ -1,5 +1,6 @@
 ---
 const currentYear = new Date().getFullYear();
+const assetPath = (path) => `${import.meta.env.BASE_URL}${path}`;
 ---
 
 <!doctype html>
@@ -32,7 +33,7 @@ const currentYear = new Date().getFullYear();
       <section class="hero" aria-label="Ford-specialist in Houthalen">
         <img
           class="hero__image"
-          src="/images/hero-garage.png"
+          src={assetPath("images/hero-garage.png")}
           alt="Ford Repair in Houthalen met wagens voor de garage"
           loading="eager"
           decoding="async"
@@ -192,7 +193,7 @@ const currentYear = new Date().getFullYear();
       <section class="workshop page-width" aria-labelledby="workshop-title">
         <div class="workshop__image">
           <img
-            src="/images/Engine-detail-optimised.png"
+            src={assetPath("images/Engine-detail-optimised.png")}
             alt="Detail van een Ford-motor tijdens technisch onderhoud"
             loading="lazy"
             decoding="async"
@@ -227,7 +228,7 @@ const currentYear = new Date().getFullYear();
             <div class="vehicle-stage" role="group" aria-label="Twee perspectieven van de Ford C-Max">
               <figure class="vehicle-stage__frame vehicle-stage__frame--first">
                 <img
-                  src="/images/ford-cmax-cutout-side-rear-view.png"
+                  src={assetPath("images/ford-cmax-cutout-side-rear-view.png")}
                   alt="Volledige Ford C-Max vanuit de linker achterzijde bekeken"
                   width="1024"
                   height="768"
@@ -239,7 +240,7 @@ const currentYear = new Date().getFullYear();
 
               <figure class="vehicle-stage__frame vehicle-stage__frame--second">
                 <img
-                  src="/images/ford-cmax-cutout-rear-view.png"
+                  src={assetPath("images/ford-cmax-cutout-rear-view.png")}
                   alt="Volledige Ford C-Max vanuit de rechter achterzijde bekeken"
                   width="1024"
                   height="768"
