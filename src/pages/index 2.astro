@@ -1,0 +1,431 @@
+---
+---
+
+<main class="site-shell">
+  <section class="hero" aria-label="Ford-specialist in Houthalen">
+    <header class="site-nav" aria-label="Hoofdnavigatie">
+      <a class="brand" href="/" aria-label="FORD-CARS NV homepage">
+        <span class="brand__name">FORD-CARS NV</span>
+        <span class="brand__tagline">Onafhankelijk verdeler</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primaire navigatie">
+        <a href="#diensten">Diensten</a>
+        <a href="#occasies">Occasies</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="#afspraak">Maak afspraak</a>
+      </nav>
+    </header>
+
+    <img
+      class="hero__image"
+      src="/images/hero-garage.png"
+      alt="Werkplaats voor Ford onderhoud en herstellingen"
+      loading="eager"
+      decoding="async"
+    />
+
+    <div class="hero__shade" aria-hidden="true"></div>
+
+    <div class="hero__inner">
+      <div class="hero__content">
+        <p class="hero__eyebrow">FORD-SPECIALIST IN HOUTHALEN</p>
+
+        <h1>
+          <span>Onderhoud en</span>
+          <span>herstellingen.</span>
+          <span>Zonder omwegen.</span>
+        </h1>
+
+        <p class="hero__description">
+          Professionele diagnose, onderhoud en herstellingen voor Ford-wagens
+          en lichte bestelwagens.
+        </p>
+
+        <div class="hero__actions" aria-label="Contactopties">
+          <a class="button button--primary" href="#afspraak">Maak een afspraak</a>
+          <a class="button button--secondary" href="tel:+32472672647">Bel 0472 67 26 47</a>
+        </div>
+      </div>
+
+      <p class="hero__location">EUROPARK 1074 &mdash; HOUTHALEN</p>
+    </div>
+
+    <p class="hero__scroll">SCROLL TO EXPLORE</p>
+  </section>
+</main>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html) {
+    background: #000;
+    color: #f3efe5;
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+  }
+
+  :global(body) {
+    margin: 0;
+    min-width: 320px;
+    background: #000;
+  }
+
+  :global(a) {
+    color: inherit;
+  }
+
+  .site-shell {
+    min-height: 100svh;
+    background: #000;
+  }
+
+  .hero {
+    --frame: clamp(12px, 1.6vw, 24px);
+    --image-top: 72px;
+    position: relative;
+    isolation: isolate;
+    min-height: 100svh;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .hero::before,
+  .hero::after {
+    position: absolute;
+    top: var(--image-top);
+    bottom: var(--frame);
+    left: var(--frame);
+    z-index: -1;
+    content: "";
+    pointer-events: none;
+  }
+
+  .hero::before {
+    width: min(66%, 920px);
+    background: rgba(5, 6, 7, 0.48);
+  }
+
+  .hero::after {
+    width: min(44%, 620px);
+    background: rgba(5, 6, 7, 0.22);
+  }
+
+  .site-nav {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 3;
+    display: flex;
+    width: min(100% - 96px, 1260px);
+    min-height: var(--image-top);
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    transform: translateX(-50%);
+  }
+
+  .brand {
+    display: grid;
+    gap: 4px;
+    flex: 0 0 auto;
+    text-decoration: none;
+  }
+
+  .brand__name {
+    color: #f5f0e7;
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+
+  .brand__tagline {
+    color: rgba(245, 240, 231, 0.62);
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.66rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(18px, 2.4vw, 34px);
+    color: rgba(245, 240, 231, 0.78);
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .nav-cta {
+    border: 1px solid #72a8d8;
+    padding: 9px 12px;
+    background: #72a8d8;
+    color: #050607;
+  }
+
+  .brand:focus-visible,
+  .nav-links a:focus-visible {
+    outline: 3px solid #72a8d8;
+    outline-offset: 4px;
+  }
+
+  .hero__image,
+  .hero__shade {
+    position: absolute;
+    top: var(--image-top);
+    right: var(--frame);
+    bottom: var(--frame);
+    left: var(--frame);
+    width: auto;
+    height: auto;
+  }
+
+  .hero__image {
+    z-index: -3;
+    object-fit: cover;
+    object-position: 54% center;
+    filter: saturate(0.82) contrast(1.04);
+  }
+
+  .hero__shade {
+    z-index: -2;
+    background: rgba(5, 6, 7, 0.28);
+  }
+
+  .hero__inner {
+    display: grid;
+    min-height: 100svh;
+    width: min(100% - 96px, 1260px);
+    margin: 0 auto;
+    padding: 122px 0 46px;
+    grid-template-rows: 1fr auto;
+  }
+
+  .hero__content {
+    align-self: center;
+    width: min(720px, 100%);
+    padding-top: 72px;
+    padding-left: clamp(20px, 4vw, 72px);
+  }
+
+  .hero__eyebrow {
+    margin: 0 0 24px;
+    color: #72a8d8;
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+  }
+
+  h1 {
+    max-width: 720px;
+    margin: 0;
+    color: #f5f0e7;
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+    font-size: clamp(2.75rem, 6.2vw, 6rem);
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: 0;
+  }
+
+  h1 span {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .hero__description {
+    max-width: 520px;
+    margin: 30px 0 0;
+    color: rgba(245, 240, 231, 0.82);
+    font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+    line-height: 1.6;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+  }
+
+  .button {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    padding: 0 15px;
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    text-decoration: none;
+  }
+
+  .button--primary {
+    background: #f5f0e7;
+    color: #07090b;
+  }
+
+  .button--secondary {
+    border-color: rgba(245, 240, 231, 0.34);
+    background: rgba(5, 6, 7, 0.16);
+    color: #f5f0e7;
+  }
+
+  .button:focus-visible {
+    outline: 3px solid #72a8d8;
+    outline-offset: 4px;
+  }
+
+  .hero__location {
+    margin: 56px 0 0;
+    color: rgba(245, 240, 231, 0.72);
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.45;
+  }
+
+  .hero__scroll {
+    position: absolute;
+    right: max(28px, calc((100vw - 1260px) / 2));
+    bottom: 42px;
+    z-index: 2;
+    margin: 0;
+    color: rgba(245, 240, 231, 0.58);
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-orientation: mixed;
+    writing-mode: vertical-rl;
+  }
+
+  @media (max-width: 760px) {
+    .hero {
+      --frame: 8px;
+      --image-top: 104px;
+    }
+
+    .site-nav {
+      display: grid;
+      grid-template-columns: 1fr;
+      width: min(100% - 32px, 1260px);
+      min-height: 0;
+      align-items: flex-start;
+      padding-top: 18px;
+      row-gap: 14px;
+    }
+
+    .brand__name {
+      font-size: 0.82rem;
+    }
+
+    .brand__tagline {
+      font-size: 0.68rem;
+    }
+
+    .nav-links {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 8px 14px;
+      font-size: 0.62rem;
+    }
+
+    .nav-cta {
+      padding: 8px 10px;
+    }
+
+    .hero::before {
+      width: 78%;
+      background: rgba(5, 6, 7, 0.46);
+    }
+
+    .hero::after {
+      width: 52%;
+      background: rgba(5, 6, 7, 0.24);
+    }
+
+    .hero__image {
+      object-position: 39% center;
+    }
+
+    .hero__shade {
+      background: rgba(5, 6, 7, 0.32);
+    }
+
+    .hero__inner {
+      width: min(100% - 32px, 1180px);
+      padding: 146px 0 28px;
+    }
+
+    .hero__content {
+      align-self: end;
+      padding-top: 84px;
+      padding-left: 0;
+    }
+
+    .hero__eyebrow {
+      margin-bottom: 18px;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+    }
+
+    h1 {
+      font-size: clamp(2.45rem, 12vw, 4rem);
+      line-height: 0.94;
+    }
+
+    h1 span {
+      white-space: normal;
+    }
+
+    .hero__description {
+      margin-top: 24px;
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .hero__actions {
+      display: grid;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .button {
+      width: 100%;
+      min-height: 44px;
+      padding: 0 16px;
+    }
+
+    .hero__location {
+      margin-top: 42px;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+    }
+
+    .hero__scroll {
+      right: 16px;
+      bottom: 32px;
+      display: none;
+    }
+  }
+</style>
